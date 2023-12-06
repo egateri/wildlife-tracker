@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 jar {
-    manifest {attributes('Main-Class':'com.moringaschool.student.Main')}
+    manifest {attributes('Main-Class':'com.moringaschool.student.App')}
     from {configurations.compileClasspath.filter{ it.exists() }.collect { it.isDirectory() ? it : zipTree(it) }}
 }
 group = 'com.moringaschool.student'
