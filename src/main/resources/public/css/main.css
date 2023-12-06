@@ -5,7 +5,7 @@
 }
 /* CSS Style of the body */
 body {
-  background-color: #cfcfcf;
+  background-color: white;
   padding: 5px;
 }
 
@@ -25,7 +25,7 @@ body {
 /* Style the top navigation bar */
 .navigation {
   overflow: hidden;
-  background-color: cyan;
+  background-color: green;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -57,6 +57,7 @@ body {
   text-align: center;
   color: white;
   margin-top: 20px;
+  padding-bottom:5px;
 }
 /* span style */
 #beforepara {
