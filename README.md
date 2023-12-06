@@ -12,7 +12,7 @@ Wildlife Tracker
 
 ### Live Link
 
-https://<>.onrender.com/
+https://wildlife-tracker-service.onrender.com/
 
 ### BDD
 As a user, I would like to;
