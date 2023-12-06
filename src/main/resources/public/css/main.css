@@ -1,0 +1,123 @@
+/* Box sizing style */
+* {
+  box-sizing: border-box;
+
+}
+/* CSS Style of the body */
+body {
+  background-color: #cfcfcf;
+  padding: 5px;
+}
+
+/* Style for the header */
+.header {
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+/* Style for row
+.row {
+  background-color: white;
+  padding: 30px;
+}
+*/
+/* Style the top navigation bar */
+.navigation {
+  overflow: hidden;
+  background-color: gray;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+/* Style the top navigation bar Links*/
+.navigation a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* Change color on hover */
+.navigation a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* .active {
+  background-color: #04AA6D;
+} */
+
+/* Style the footer */
+.footer {
+  background-color: black;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+/* span style */
+#beforepara {
+  float: left;
+  font-size: 250%;
+  padding: 0px 3px 0px 3px;
+  display: inline;
+}
+
+/* Image style */
+img {
+  width: 70%;
+  height: auto;
+  align: center;
+  background-repeat: no-repeat;
+}
+
+/* Left column */
+.left-column {
+  float: left;
+  width: 1%;
+}
+
+/* Right column */
+.right-column {
+  float: left;
+  width: 99%;
+  padding-left: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive layout  */
+@media screen and (max-width: 800px) {
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+/* Field to hold content */
+.field {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+h3 {
+  color: green;
+}
+
+.marquee {
+  color: red;
+  font-size:30px;
+}
