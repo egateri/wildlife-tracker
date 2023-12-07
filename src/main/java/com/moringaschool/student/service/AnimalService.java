@@ -62,11 +62,11 @@ public class AnimalService {
                 .addParameter("id", id)
                 .throwOnMappingFailure(false)
                 .executeUpdate();
-        String sql2 = "DELETE from sightings WHERE animal_id = :id";
-        connection.createQuery(sql2)
-                .addParameter("id", id)
-                .throwOnMappingFailure(false)
-                .executeUpdate();
+//        String sql2 = "DELETE from sightings WHERE animal_id = :id";
+//        connection.createQuery(sql2)
+//                .addParameter("id", id)
+//                .throwOnMappingFailure(false)
+//                .executeUpdate();
 
     }
 }

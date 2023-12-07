@@ -22,6 +22,7 @@ public class App {
         port(8080);
         staticFileLocation("/public");
 
+            //GET - Home page
             get("/", (request, response) -> {
                 HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
                 Map<String, Object> payload = new HashMap<>();
@@ -31,8 +32,7 @@ public class App {
             });
 
             //GET - Get ALL Animals
-
-            get("/animal/all", (request, response) -> {
+            get("/animal", (request, response) -> {
                 HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
                 Map<String, Object> payload = new HashMap<>();
                 try{
@@ -49,8 +49,7 @@ public class App {
 
             });
 
-        //POST - Save One Animal
-
+        //POST - Save One Animal.
         post("/animal/new", (request, response) -> {
             HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
             Map<String, Object> payload = new HashMap<>();
@@ -63,7 +62,7 @@ public class App {
                 list.add(type);
                 payload.put("animal", list);
                 ModelAndView model = new ModelAndView(payload, "index.hbs");
-                logger.info("requestRefId = requestID | statusCode = 200  | status = OK | message = All animals queries |"+list);
+                logger.info("requestRefId = requestID | statusCode = 201  | status = created | message = created |"+list);
                 return engine.render(model);
             }
             catch (Exception ex){
@@ -73,6 +72,69 @@ public class App {
 
         });
 
+        //DELETE - Delete One Animal By ID.
+        delete("/animal/:id", (request, response) -> {
+            HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+            Map<String, Object> payload = new HashMap<>();
+            String idString = request.params("id");
+            int id = Integer.parseInt(idString);
+            try{
+                AnimalService.deleteAnimal(id);
+
+                payload.put("animalId", id);
+                ModelAndView model = new ModelAndView(payload, "index.hbs");
+                logger.info("requestRefId = requestID | statusCode = 200  | status = OK | message = Deleted Success |"+id);
+                return engine.render(model);
+            }
+            catch (Exception ex){
+                logger.error("requestRefId = requestID | statusCode = 500  | status = error | message = internal server error |"+ex);
+                return "Encountered an error adding animal";
+            }
+
+        });
+
+        //PUT - Update One Animal By ID.
+        put("/animal/:id", (request, response) -> {
+            HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+            Map<String, Object> payload = new HashMap<>();
+            String name = request.queryParams("name");
+            String idString = request.params("id");
+            int id = Integer.parseInt(idString);
+            try{
+                AnimalService.updateAnimal(id,name);
+
+                payload.put("animalId", id);
+                ModelAndView model = new ModelAndView(payload, "index.hbs");
+                logger.info("requestRefId = requestID | statusCode = 200  | status = OK | message = updated Success |"+id);
+                return engine.render(model);
+            }
+            catch (Exception ex){
+                logger.error("requestRefId = requestID | statusCode = 500  | status = error | message = internal server error |"+ex);
+                return "Encountered an error adding animal";
+            }
+
+        });
+
+        //GET - Get One Animal By ID.
+        get("/animal/:id", (request, response) -> {
+            HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+            Map<String, Object> payload = new HashMap<>();
+            String idString = request.params("id");
+            int id = Integer.parseInt(idString);
+            try{
+               Animal animal= AnimalService.getAnimalById(id);
+
+                payload.put("animalId", animal);
+                ModelAndView model = new ModelAndView(payload, "index.hbs");
+                logger.info("requestRefId = requestID | statusCode = 200  | status = OK | message = updated Success |"+animal);
+                return engine.render(model);
+            }
+            catch (Exception ex){
+                logger.error("requestRefId = requestID | statusCode = 500  | status = error | message = internal server error |"+ex);
+                return "Encountered an error adding animal";
+            }
+
+        });
 
         }
 
