@@ -19,6 +19,7 @@ import java.util.Map;
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
+        //PORT
         port(8080);
         staticFileLocation("/public");
 
